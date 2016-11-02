@@ -1,0 +1,47 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* validation
+-------------------------------------------------- */
+.field-required {
+    color: #e31937;
+    font-family: Verdana;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.validation-summary-errors {
+    color: #d9534f;
+    font-size: 12px;
+    margin: 0 0 10px;
+    padding: 10px;
+    border-left: 3px solid #d9534f;
+    background-color: #f2dede;
+    border-radius: 3px;
+}
+
+    .validation-summary-errors ul {
+        padding: 0 0 0 15px;
+        margin: 0;
+    }
+
+.field-validation-error {
+    color: #d9534f;
+    font-size: 12px;
+    font-weight: bold;
+}
