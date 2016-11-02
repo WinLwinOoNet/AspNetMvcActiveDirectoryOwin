@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{7B74A33A-93ED-4628-8E7B-93815BC336B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMvcActiveDirectoryOwin.Web", "Presentation\AspNetMvcActiveDirectoryOwin.Web\AspNetMvcActiveDirectoryOwin.Web.csproj", "{E70279E9-EFA6-4ACB-A270-E1E7EA8F3D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMvcActiveDirectoryOwin.Web.Common", "Presentation\AspNetMvcActiveDirectoryOwin.Web.Common\AspNetMvcActiveDirectoryOwin.Web.Common.csproj", "{9FF4640D-7E62-4DE3-9A8C-47065ED6F443}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E70279E9-EFA6-4ACB-A270-E1E7EA8F3D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70279E9-EFA6-4ACB-A270-E1E7EA8F3D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70279E9-EFA6-4ACB-A270-E1E7EA8F3D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70279E9-EFA6-4ACB-A270-E1E7EA8F3D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF4640D-7E62-4DE3-9A8C-47065ED6F443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF4640D-7E62-4DE3-9A8C-47065ED6F443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF4640D-7E62-4DE3-9A8C-47065ED6F443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF4640D-7E62-4DE3-9A8C-47065ED6F443}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E70279E9-EFA6-4ACB-A270-E1E7EA8F3D05} = {7B74A33A-93ED-4628-8E7B-93815BC336B1}
+		{9FF4640D-7E62-4DE3-9A8C-47065ED6F443} = {7B74A33A-93ED-4628-8E7B-93815BC336B1}
+	EndGlobalSection
+EndGlobal
