@@ -1,0 +1,137 @@
+﻿@model AspNetMvcActiveDirectoryOwin.Web.Common.Models.Users.UserCreateUpdateModel
+
+<div class="content">
+    <div class="box box-primary form-horizontal">
+        <div class="box-body">
+            @Html.HiddenFor(model => model.Id)
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @if (Model.Id > 0)
+                {
+                    @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-3 col-sm-4 col-xs-12" })
+                    @Html.HiddenFor(model => model.UserName)
+                    <div class="col-md-4 col-sm-5 col-xs-12 form-control-static">
+                        @Model.UserName
+                    </div>
+                }
+                else
+                {
+                    <label class="control-label col-md-3 col-sm-4 col-xs-12" for="@Html.IdFor(model => model.UserName)">
+                        Username <i id="username-help" class="fa fa-info-circle"></i>
+                    </label>
+                    @(Html.Kendo().Tooltip().For("#username-help").Position(TooltipPosition.Bottom).Content("<p>Active Directory Account</p>").Width(175))
+                    <div class="col-md-4 col-sm-5 col-xs-12">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-3 col-sm-4 col-xs-12" })
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-5 col-sm-3 col-xs-12">
+                    <button id="lookup-button" type="button" class="btn btn-default">
+                        <i class="fa fa-search" aria-hidden="true"></i> Lookup from AD
+                    </button>
+                    <div id="dialog"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-3 col-sm-4 col-xs-12" })
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SelectedRoleIds, new { @class = "control-label col-md-3 col-sm-4 col-xs-12" })
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    @(Html.Kendo().MultiSelectFor(model => model.SelectedRoleIds)
+                        .BindTo(Model.AvailableRoleNames)
+                        .DataTextField("Text")
+                        .DataValueField("Value"))
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-4 col-xs-12">
+                    Status <i id="isactive-help" class="fa fa-info-circle"></i>
+                </label>
+                @(Html.Kendo().Tooltip().For("#isactive-help").Position(TooltipPosition.Bottom).Width(250)
+                    .Content("<p>If you do not want this user accessing CAT Application, you can mark Status as Inactive.</p>"))
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <label for="@Html.IdFor(model => model.Active)" class="checkbox-inline">@Html.CheckBoxFor(model => model.Active) Active</label>
+                </div>
+            </div>
+
+            @if (Model.Id > 0)
+            {
+                @Html.HiddenFor(model => model.CreatedOn)
+                @Html.HiddenFor(model => model.ModifiedOn)
+                @Html.HiddenFor(model => model.LastLoginDate)
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-sm-offset-4 col-md-9 col-sm-8 col-xs-12">
+                        <span class="timestamp">Created on <strong>@Model.CreatedOn.ToShortDateString()</strong></span>
+                        <span class="timestamp">Last updated on <strong>@Model.ModifiedOn.ToShortDateString()</strong></span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var dialog = $("#dialog")
+            .kendoDialog({
+                width: "325px",
+                visible: false,
+                title: "Lookup from Active Directory",
+                closable: true,
+                modal: true,
+                content: "<label class=\"control-label\" for=\"Domain\">Domain</label>" +
+                        "<select class=\"form-control\" id=\"domainSelect\" style=\"width: 270px\">" +
+                        '@foreach (var item in Model.AvailableDomains)
+                        {
+                            @Html.Raw($"<option value=\"{item.Value}\">{item.Text}</option>")
+                        }' +
+                        '</select>',
+                actions: [{ text: 'Cancel' }, { text: 'Ok', primary: true }],
+                close: dialogClose
+            });
+
+        $("#lookup-button")
+            .click(function () {
+                if ($("#@Html.IdFor(model => model.UserName)").valid()) {
+                    $("#dialog").data("kendoDialog").open();
+                }
+            });
+
+        function dialogClose(e) {
+            var domain = $("#domainSelect").val(),
+                userNameInput = $("#@Html.IdFor(model => model.UserName)"),
+                userName = userNameInput === undefined ? "@Model.UserName" : userNameInput.val();
+
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@Url.Action("GetUserFromAd", "Users")",
+                data: { "domain": domain, "userName": userName },
+                success: function (data) {
+                    $("#@Html.IdFor(model => model.FirstName)").val(data.FirstName);
+                    $("#@Html.IdFor(model => model.LastName)").val(data.LastName);
+                },
+                error: function () {
+                    kendo.alert("Failed to lookup user information from AD.");
+                }
+            });
+        }
+
+    });
+</script>

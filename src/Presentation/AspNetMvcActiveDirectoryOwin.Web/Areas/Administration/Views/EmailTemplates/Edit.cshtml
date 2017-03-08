@@ -1,0 +1,22 @@
+﻿@model  AspNetMvcActiveDirectoryOwin.Web.Common.Models.EmailTemplates.EmailTemplateModel
+@{
+    ViewBag.Title = Constants.MainPages.EmailTemplateEdit;
+}
+
+@using (Html.BeginForm("Edit", "EmailTemplates", FormMethod.Post, new { role = "form" }))
+{
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            <i class="fa fa-user" aria-hidden="true"></i> @ViewBag.Title
+            <small><i class="fa fa-arrow-circle-left"></i> @Html.ActionLink("Back to Email Template list", "List")</small>
+        </h1>
+        <div class="pull-right">
+            <button id="saveButton" type="submit" class="btn btn-primary">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+            </button>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+    @Html.Partial("_CreateOrUpdate", Model)
+}

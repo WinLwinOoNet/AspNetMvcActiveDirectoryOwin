@@ -1,0 +1,30 @@
+﻿@using AspNetMvcActiveDirectoryOwin.Web.Common.Models.Settings
+@{
+    ViewBag.Title = Constants.MainPages.Settings;
+}
+
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        <i class="fa fa-cog" aria-hidden="true"></i> @ViewBag.Title
+    </h1>
+</div>
+
+<div class="content">
+    @(Html.Kendo().Grid<SettingModel>()
+        .Name("settingGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(d => d.Id).Title("Edit")
+                .ClientTemplate("<a href=\"Edit/#=Id#\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>")
+                .Width(50)
+                .HtmlAttributes(new { @class = "text-center" })
+                .HeaderHtmlAttributes(new { @class = "text-center" });
+            columns.Bound(d => d.Name);
+            columns.Bound(d => d.Value);
+        })
+        .HtmlAttributes(new { style = "width: 500px" })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("List", "Settings")))
+    )
+</div>

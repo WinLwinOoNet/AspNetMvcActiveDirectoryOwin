@@ -1,0 +1,150 @@
+﻿@using AspNetMvcActiveDirectoryOwin.Web.Common.Models.TraceLogs
+@model TraceLogSearchModel
+@{
+    ViewBag.Title = Constants.MainPages.TraceLogs;
+}
+
+@using (Html.BeginForm())
+{
+    <div class="content-header clearfix">
+        <h1><i class="fa fa-calendar" aria-hidden="true"></i> @ViewBag.Title</h1>
+    </div>
+
+    <div class="content">
+        <div class="panel panel-default">
+            <div class="panel-body form-horizontal">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FromDate, new { @class = "control-label col-md-4 col-sm-5 col-xs-12" })
+                            <div class="col-md-8 col-sm-7 col-xs-12">
+                                @(Html.Kendo().DateTimePickerFor(model => model.FromDate).Value(Model.FromDate)
+                                    .HtmlAttributes(new { placeholder = "From Date", style = "width: 100%" }))
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ToDate, new { @class = "control-label col-md-4 col-sm-5 col-xs-12" })
+                            <div class="col-md-8 col-sm-7 col-xs-12">
+                                @(Html.Kendo().DateTimePickerFor(model => model.ToDate).Value(Model.ToDate)
+                                  .HtmlAttributes(new { placeholder = "To Date", style = "width: 100%" }))
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PerformedBy, new { @class = "control-label col-md-4 col-sm-5 col-xs-12" })
+                            <div class="col-md-8 col-sm-7 col-xs-12">
+                                @Html.DropDownListFor(model => model.PerformedBy, Model.AvailableUsernames, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Controller, new { @class = "control-label col-md-4 col-sm-5 col-xs-12" })
+                            <div class="col-md-8 col-sm-7 col-xs-12">
+                                @Html.TextBoxFor(model => model.Controller, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Action, new { @class = "control-label col-md-4 col-sm-5 col-xs-12" })
+                            <div class="col-md-8 col-sm-7 col-xs-12">
+                                @Html.TextBoxFor(model => model.Action, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Message, new { @class = "control-label col-md-4 col-sm-5 col-xs-12" })
+                            <div class="col-md-8 col-sm-7 col-xs-12">
+                                @Html.TextBoxFor(model => model.Message, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <button id="searchButton" type="button" class="btn btn-primary btn-search"
+                                data-loading-text="Searching...">
+                            <i class="fa fa-search" aria-hidden="true"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @(Html.Kendo().Grid<TraceLogModel>()
+              .Name("traceLogGrid")
+              .HtmlAttributes(new { @class = "table-fixed" })
+              .Pageable(pageableBuilder => pageableBuilder.Refresh(true).PageSizes(new[] { 5, 10, 25, 50, 100, 500, 1000 }))
+              .Columns(columns =>
+              {
+              columns.Template(@<text></text>).ClientTemplate(@"<a class=""k-grid-edit"" href=""\#""><i class=""fa fa-external-link""></i></a>")
+                      .Width(50).HtmlAttributes(new { @class = "text-center" });
+                  columns.Bound(d => d.PerformedOn).Format("{0:g}").Width(150);
+                  columns.Bound(d => d.PerformedBy).Width(100);
+                  columns.Bound(d => d.Action);
+                  columns.Bound(d => d.Controller);
+                  columns.Bound(d => d.Message);
+              })
+              .Events(events => events.Edit("edit"))
+              .Editable(editable => editable.Mode(GridEditMode.PopUp)
+                  .TemplateName("TraceLog")
+                  .Window(w => w.Title("Trace Log Details")))
+              .DataSource(dataSource => dataSource
+                  .Ajax()
+                  .ServerOperation(true)
+                  .PageSize(10)
+                  .Read(read => read.Action("List", "TraceLogs").Data("additionalData"))
+                  .Model(model => model.Id(m => m.Id))
+                  .Update(update => update.Action("ActionDoesNotExist", "ControllerDoesNotExist"))
+                  .Events(events => events.RequestStart("requestStart").RequestEnd("requestEnd").Error("displayGridError")))
+        )
+    </div>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("form").keydown(function (event) {
+                if (event.keyCode === 13) {
+                    $("#searchButton").click();
+                    return false;
+                }
+            });
+
+            $("#searchButton").click(function () {
+                var grid = $("#traceLogGrid").data("kendoGrid");
+                grid.dataSource.page(1); // new search, so set page size to 1.
+            });
+        });
+
+        function edit(e) {
+            $(".k-grid-update").hide();
+            $(".k-grid-cancel").html("<i class=\"fa fa-times\"></i> Close");
+        }
+
+        function requestStart(e) {
+            $("#searchButton").button("loading");
+        }
+
+        function requestEnd(e) {
+            $("#searchButton").button("reset");
+        }
+
+        function dataBound() {
+            if (this.dataSource.totalPages() === 1) {
+                this.pager.element.hide();
+            } else {
+                this.pager.element.show();
+            }
+        }
+
+        function additionalData() {
+            return {
+                FromDate: $("#@Html.IdFor(model => model.FromDate)").val(),
+                ToDate: $("#@Html.IdFor(model => model.ToDate)").val(),
+                Controller: $("#@Html.IdFor(model => model.Controller)").val(),
+                PerformedBy: $("#@Html.IdFor(model => model.PerformedBy)").val(),
+                Action: $("#@Html.IdFor(model => model.Action)").val(),
+                Message: $("#@Html.IdFor(model => model.Message)").val()
+            };
+        }
+
+    </script>
+}

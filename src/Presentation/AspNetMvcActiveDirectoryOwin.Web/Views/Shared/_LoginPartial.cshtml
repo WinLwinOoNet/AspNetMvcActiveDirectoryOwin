@@ -1,0 +1,19 @@
+@using System.Security.Claims
+@if (Request.IsAuthenticated)
+{
+    <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user"></i> Hello, @(((ClaimsPrincipal)HttpContext.Current.User)?.FindFirst(ClaimTypes.GivenName)?.Value)! 
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="user-body text-center">
+                @using (Html.BeginForm("Logout", "Account", new { Area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Sign out</a>
+                }
+            </li>
+        </ul>
+    </li>
+}

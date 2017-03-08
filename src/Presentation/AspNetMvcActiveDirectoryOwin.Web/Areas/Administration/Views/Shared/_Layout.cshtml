@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/kendo/css")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/scripts")
+</head>
+<body class="fixed skin-green-light sidebar-mini">
+    <div class="alert-container"></div>
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="@Url.RouteUrl("Dashboard")" class="logo">
+                <span class="logo-mini"><strong>ADO</strong></span>
+                <span class="logo-lg">ASP MVC AD OWIN</span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="@Url.Action("Index", "Home", new {area = ""})">
+                                <i class="fa fa-arrow-circle-left"></i> Back to User Dashboard
+                            </a>
+                        </li>
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                @Html.Partial("_MenuPartial")
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <div class="control-sidebar-bg"></div>
+    </div>
+    @Html.Partial("_Alerts")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

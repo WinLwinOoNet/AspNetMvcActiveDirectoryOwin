@@ -1,0 +1,33 @@
+﻿@model  AspNetMvcActiveDirectoryOwin.Web.Common.Models.Logs.LogModel
+
+@Html.HiddenFor(model => model.Id)
+<div class="popup-editor-md">
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Date)
+                <div data-format="g" data-bind="text: @Html.IdFor(model => model.Date)"></div>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Level)
+                <div data-bind="text: @Html.IdFor(model => model.Level)"></div>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Logger)
+                <div data-bind="text: @Html.IdFor(model => model.Logger)"></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Message)
+        <div data-bind="text: @Html.IdFor(model => model.Message)"></div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Exception)
+        <div data-bind="text: @Html.IdFor(model => model.Exception)"></div>
+    </div>
+</div>
