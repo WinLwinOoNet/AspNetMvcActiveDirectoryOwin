@@ -1,0 +1,73 @@
+Install-Package Antlr AspNetMvcActiveDirectoryOwin.Web
+Install-Package Autofac -Version 3.5.2 AspNetMvcActiveDirectoryOwin.Web
+Install-Package Autofac.Extras.CommonServiceLocator -Version 4.0.0 AspNetMvcActiveDirectoryOwin.Web
+Install-Package Autofac.Mvc5 -Version 3.3.4 AspNetMvcActiveDirectoryOwin.Web
+Install-Package AutoMapper AspNetMvcActiveDirectoryOwin.Web
+Install-Package bootstrap AspNetMvcActiveDirectoryOwin.Web
+Install-Package CommonServiceLocator AspNetMvcActiveDirectoryOwin.Web
+Install-Package EntityFramework AspNetMvcActiveDirectoryOwin.Web
+Install-Package FontAwesome AspNetMvcActiveDirectoryOwin.Web
+Install-Package jQuery -Version 2.2.4 AspNetMvcActiveDirectoryOwin.Web
+Install-Package jQuery.Validation AspNetMvcActiveDirectoryOwin.Web
+Install-Package log4net AspNetMvcActiveDirectoryOwin.Web
+Install-Package Microsoft.AspNet.Web.Optimization AspNetMvcActiveDirectoryOwin.Web
+Install-Package Microsoft.jQuery.Unobtrusive.Validation AspNetMvcActiveDirectoryOwin.Web
+Install-Package Microsoft.Owin AspNetMvcActiveDirectoryOwin.Web
+Install-Package Microsoft.Owin.Host.SystemWeb AspNetMvcActiveDirectoryOwin.Web
+Install-Package Microsoft.Owin.Security AspNetMvcActiveDirectoryOwin.Web
+Install-Package Microsoft.Owin.Security.Cookies AspNetMvcActiveDirectoryOwin.Web
+Install-Package Newtonsoft.Json AspNetMvcActiveDirectoryOwin.Web
+Install-Package Owin AspNetMvcActiveDirectoryOwin.Web
+Install-Package underscore.js AspNetMvcActiveDirectoryOwin.Web
+Install-Package WebGrease AspNetMvcActiveDirectoryOwin.Web
+
+Install-Package Autofac -Version 3.5.2 AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Autofac.Mvc5 -Version 3.3.4 AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package AutoMapper AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Dapper AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package EntityFramework AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package FluentValidation AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package log4net AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Microsoft.AspNet.Mvc AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Microsoft.AspNet.Razor AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Microsoft.AspNet.WebPages AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Microsoft.Owin AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Microsoft.Owin.Host.SystemWeb AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Microsoft.Owin.Security AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Microsoft.Owin.Security.Cookies AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Microsoft.Web.Infrastructure AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Newtonsoft.Json AspNetMvcActiveDirectoryOwin.Web.Common
+Install-Package Owin AspNetMvcActiveDirectoryOwin.Web.Common
+
+Install-Package EntityFramework AspNetMvcActiveDirectoryOwin.Core
+
+Install-Package EntityFramework AspNetMvcActiveDirectoryOwin.Data
+
+Install-Package log4net AspNetMvcActiveDirectoryOwin.Logging
+
+Install-Package EntityFramework AspNetMvcActiveDirectoryOwin.Services
+Install-Package log4net AspNetMvcActiveDirectoryOwin.Services
+
+Install-Package EntityFramework AspNetMvcActiveDirectoryOwin.Data.Tests
+Install-Package EntityFramework.SqlServerCompact AspNetMvcActiveDirectoryOwin.Data.Tests
+Install-Package Microsoft.SqlServer.Compact AspNetMvcActiveDirectoryOwin.Data.Tests
+Install-Package NUnit AspNetMvcActiveDirectoryOwin.Data.Tests
+
+Install-Package EntityFramework AspNetMvcActiveDirectoryOwin.Services.Tests
+Install-Package EntityFramework.SqlServerCompact AspNetMvcActiveDirectoryOwin.Services.Tests
+Install-Package NUnit AspNetMvcActiveDirectoryOwin.Services.Tests
+
+Install-Package AutoMapper AspNetMvcActiveDirectoryOwin.Web.Common.Tests
+Install-Package NUnit AspNetMvcActiveDirectoryOwin.Web.Common.Tests
+
+Install-Package EntityFramework AspNetMvcActiveDirectoryOwin.Services.Tests
+Install-Package NSubstitute AspNetMvcActiveDirectoryOwin.Services.Tests
+Install-Package NUnit AspNetMvcActiveDirectoryOwin.Services.Tests
+
+Install-Package log4net AspNetMvcActiveDirectoryOwin.Web.Tests
+Install-Package Microsoft.AspNet.Mvc AspNetMvcActiveDirectoryOwin.Web.Tests
+Install-Package Microsoft.AspNet.Razor AspNetMvcActiveDirectoryOwin.Web.Tests
+Install-Package Microsoft.AspNet.WebPages AspNetMvcActiveDirectoryOwin.Web.Tests
+Install-Package Microsoft.Web.Infrastructure AspNetMvcActiveDirectoryOwin.Web.Tests
+Install-Package NSubstitute AspNetMvcActiveDirectoryOwin.Web.Tests
+Install-Package NUnit AspNetMvcActiveDirectoryOwin.Web.Tests

@@ -1,0 +1,41 @@
+﻿@model  AspNetMvcActiveDirectoryOwin.Web.Common.Models.EmailTemplates.EmailTemplateModel
+
+<div class="content">
+    <div class="box box-primary form-horizontal">
+        <div class="box-body">
+            @Html.HiddenFor(model => model.Id)
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-3 col-sm-4 col-xs-12" })
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Subject, new { @class = "control-label col-md-3 col-sm-4 col-xs-12" })
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Body, new { @class = "control-label col-md-3 col-sm-4 col-xs-12" })
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    @(Html.Kendo().EditorFor(model => model.Body).Encode(false).HtmlAttributes(new { style = "height: 500px" }))
+                </div>
+            </div>
+            @if (Model.Id > 0)
+            {
+                @Html.HiddenFor(model => model.CreatedOn)
+                @Html.HiddenFor(model => model.ModifiedOn)
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-sm-offset-4 col-md-9 col-sm-8 col-xs-12">
+                        <span class="timestamp">Created on <strong>@Model.CreatedOn.ToShortDateString()</strong></span>
+                        <span class="timestamp">Last updated on <strong>@Model.ModifiedOn.ToShortDateString()</strong></span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

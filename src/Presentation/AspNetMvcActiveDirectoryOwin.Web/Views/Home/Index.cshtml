@@ -1,19 +1,65 @@
-﻿@model AspNetMvcActiveDirectoryOwin.Web.Models.HomeModel
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "User Dashboard";
 }
 
-<h2>Welcome!</h2>
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        @ViewBag.Title
+    </h1>
+</div>
 
-<div class="form-group">
-    @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
-    <div>@Model.UserName</div>
+<div class="content">
+    <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@Constants.MainPages.Sample</h3>
+                    <p>Sample text</p>
+                </div>
+                <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                <a href="@Url.Action("Index", "Sample")" class="small-box-footer show-progress">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>@Constants.MainPages.Sample</h3>
+                    <p>Sample text</p>
+                </div>
+                <div class="icon"><i class="fa fa-pie-chart"></i></div>
+                <a href="@Url.Action("Index", "Sample")" class="small-box-footer show-progress">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>@Constants.MainPages.Sample</h3>
+                    <p>Sample text</p>
+                </div>
+                <div class="icon"><i class="fa fa-stack-overflow"></i></div>
+                <a href="@Url.Action("Index", "Sample")" class="small-box-footer show-progress">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>@Constants.MainPages.Sample</h3>
+                    <p>Sample text</p>
+                </div>
+                <div class="icon"><i class="fa fa-comments-o"></i></div>
+                <a href="@Url.Action("Index", "Sample")" class="small-box-footer show-progress">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="form-group">
-    @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })
-    <div>@Model.FirstName</div>
-</div>
-<div class="form-group">
-    @Html.LabelFor(m => m.LastName, new { @class = "control-label" })
-    <div>@Model.LastName</div>
-</div>
+

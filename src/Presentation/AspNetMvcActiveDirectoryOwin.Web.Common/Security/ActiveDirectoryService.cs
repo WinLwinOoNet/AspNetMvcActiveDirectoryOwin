@@ -1,4 +1,6 @@
 ﻿using System.DirectoryServices.AccountManagement;
+using AspNetMvcActiveDirectoryOwin.Core;
+using AspNetMvcActiveDirectoryOwin.Core.Domain;
 
 namespace AspNetMvcActiveDirectoryOwin.Web.Common.Security
 {
@@ -6,15 +8,24 @@ namespace AspNetMvcActiveDirectoryOwin.Web.Common.Security
     {
         public bool ValidateCredentials(string domain, string userName, string password)
         {
+            userName = userName.EnsureNotNull();
+            userName = userName.Trim();
+
+            password = password.EnsureNotNull();
+            password = password.Trim();
+
             using (var context = new PrincipalContext(ContextType.Domain, domain))
             {
                 return context.ValidateCredentials(userName, password);
             }
         }
 
-        public User GetUser(string domain, string userName)
+        public User GetUserFromAd(string domain, string userName)
         {
             User result = null;
+            userName = userName.EnsureNotNull();
+            userName = userName.Trim();
+
             using (var context = new PrincipalContext(ContextType.Domain, domain))
             {
                 var user = UserPrincipal.FindByIdentity(context, userName);
@@ -22,9 +33,11 @@ namespace AspNetMvcActiveDirectoryOwin.Web.Common.Security
                 {
                     result = new User
                     {
+                        Id = 0,
                         UserName = userName,
                         FirstName = user.GivenName,
-                        LastName = user.Surname
+                        LastName = user.Surname,
+                        Active = true
                     };
                 }
             }

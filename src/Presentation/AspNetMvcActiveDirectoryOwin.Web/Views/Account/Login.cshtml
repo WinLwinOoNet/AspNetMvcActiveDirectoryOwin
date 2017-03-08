@@ -1,37 +1,67 @@
-﻿@model AspNetMvcActiveDirectoryOwin.Web.Models.LoginModel
+﻿@model  AspNetMvcActiveDirectoryOwin.Web.Common.Models.Account.LoginModel
 @{
-    ViewBag.Title = "Login";
+    Layout = null;
+    ViewBag.Title = "ASP.NET MVC Active Directory with OWIN";
 }
 
-<h2>Login</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/kendo/css")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/scripts")
+</head>
+<body class="container-fluid">
+    <div class="login-container">
+        @*<img src="@Url.Content("~/Content/Images/Logo.png")" alt="My Company" class="img-responsive logo" />*@
+        <div class="login-panel">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl },
+                        FormMethod.Post, new { @class = "clearfix", role = "form", autocomplete = "off" }))
+            {
+                @Html.AntiForgeryToken()
+                <h3><i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</h3>
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Domain, new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.Domain, Model.AvailableDomains, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Domain, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+                    <i id="username-help" class="fa fa-info-circle"></i>
+                    @(Html.Kendo().Tooltip()
+                          .For("#username-help")
+                          .Position(TooltipPosition.Bottom)
+                          .Content("<p><strong>Active Directory</strong> login username and password</p>")
+                          .Width(300)
+                    )
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <button id="submit-button" type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </div>
+            }
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#@Html.IdFor(model => model.UserName)").focus();
 
-@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl },
-                FormMethod.Post, new { @class = "clearfix", role = "form", autocomplete = "off" }))
-{
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        @Html.LabelFor(m => m.Domain, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.Domain, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Domain, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
-        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.UserName)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "control-label" })
-        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Password)
-    </div>
-    <div class="form-group">
-        <button id="btnSubmit" type="submit" value="Sign In" class="btn btn-primary">
-            Sign In
-        </button>
-    </div>
-}
-<script type="text/javascript">
-    $(function () {
-        $('#Domain').focus();
-    });
-</script>
+            $("form").data("validator").settings.submitHandler = function (form) {
+                $("#submit-button").html("<i class=\"fa fa-spinner fa-pulse\"></i> Signing In...").prop('disabled', true);
+                form.submit();
+            };
+        });
+    </script>
+</body>
+</html>

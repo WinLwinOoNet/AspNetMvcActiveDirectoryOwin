@@ -43,8 +43,40 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\..\..\lib\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Extras.CommonServiceLocator, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Autofac.Extras.CommonServiceLocator.4.0.0\lib\portable40-net40+sl5+win8+wp8+wpa81\Autofac.Extras.CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kendo.Mvc, Version=2016.3.914.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\telerik.ui.for.aspnetmvc.2017.1.223\Mvc5\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -68,8 +100,12 @@
       <HintPath>..\..\..\lib\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\lib\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
@@ -141,26 +177,139 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminLTE\AdminLTE.css" />
+    <Content Include="Content\AdminLTE\AdminLTE.min.css" />
+    <Content Include="Content\AdminLTE\skin-blue-light.css" />
+    <Content Include="Content\AdminLTE\skin-blue-light.min.css" />
+    <Content Include="Content\AdminLTE\skin-green-light.css" />
+    <Content Include="Content\AdminLTE\skin-green-light.min.css" />
+    <Content Include="Content\AdminLTE\skin-red-light.css" />
+    <Content Include="Content\AdminLTE\skin-red-light.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\AdminApplicationLogDetail.png" />
+    <Content Include="Content\Images\AdminApplicationLogs.png" />
+    <Content Include="Content\Images\AdminDashboard.png" />
+    <Content Include="Content\Images\AdminEmailTemplateEdit.png" />
+    <Content Include="Content\Images\AdminEmailTemplateList.png" />
+    <Content Include="Content\Images\AdminReleaseHistory.png" />
+    <Content Include="Content\Images\AdminTraceLogDetail.png" />
+    <Content Include="Content\Images\AdminTraceLogs.png" />
+    <Content Include="Content\Images\AdminUserCreate.png" />
+    <Content Include="Content\Images\AdminUserList.png" />
+    <Content Include="Content\Images\DatabaseDiagram.png" />
+    <Content Include="Content\Images\Login.png" />
+    <Content Include="Content\Images\UserCreateUpdate.png" />
+    <Content Include="Content\Images\UserDashboard.png" />
+    <Content Include="Content\kendo\Bootstrap\editor.png" />
+    <Content Include="Content\kendo\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\kendo\Bootstrap\indeterminate.gif" />
+    <Content Include="Content\kendo\Bootstrap\loading-image.gif" />
+    <Content Include="Content\kendo\Bootstrap\loading.gif" />
+    <Content Include="Content\kendo\Bootstrap\loading_2x.gif" />
+    <Content Include="Content\kendo\Bootstrap\markers.png" />
+    <Content Include="Content\kendo\Bootstrap\markers_2x.png" />
+    <Content Include="Content\kendo\Bootstrap\slider-h.gif" />
+    <Content Include="Content\kendo\Bootstrap\slider-v.gif" />
+    <Content Include="Content\kendo\Bootstrap\sprite.png" />
+    <Content Include="Content\kendo\Bootstrap\sprite_2x.png" />
+    <Content Include="Content\kendo\Bootstrap\sprite_kpi.png" />
+    <Content Include="Content\kendo\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="Content\kendo\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="Content\kendo\fonts\glyphs\WebComponentsIcons.svg" />
+    <Content Include="Content\kendo\kendo.bootstrap.min.css" />
+    <Content Include="Content\kendo\kendo.common-bootstrap.min.css" />
+    <Content Include="Content\site.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\AdminLTE\app.js" />
+    <Content Include="Scripts\AdminLTE\app.min.js" />
+    <Content Include="Scripts\AdminLTE\jquery.slimscroll.js" />
+    <Content Include="Scripts\AdminLTE\jquery.slimscroll.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Areas\Administration\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\EmailTemplates\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\EmailTemplates\List.cshtml" />
+    <Content Include="Areas\Administration\Views\EmailTemplates\_CreateOrUpdate.cshtml" />
+    <Content Include="Areas\Administration\Views\Logs\EditorTemplates\Log.cshtml" />
+    <Content Include="Areas\Administration\Views\Logs\List.cshtml" />
+    <Content Include="Areas\Administration\Views\ReleaseHistory\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Settings\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Settings\List.cshtml" />
+    <Content Include="Areas\Administration\Views\Settings\_CreateOrUpdate.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Print.cshtml" />
+    <Content Include="Areas\Administration\Views\TraceLogs\EditorTemplates\TraceLog.cshtml" />
+    <Content Include="Areas\Administration\Views\TraceLogs\List.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\List.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\_CreateOrUpdate.cshtml" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\kendo\kendo.bootstrap.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-bootstrap.min.css.map" />
+    <Content Include="fonts\SourceSansPro-Bold.woff" />
+    <Content Include="fonts\SourceSansPro-Italic.woff" />
+    <Content Include="fonts\SourceSansPro-Light.woff" />
+    <Content Include="fonts\SourceSansPro-LightItalic.woff" />
+    <Content Include="fonts\SourceSansPro-Regular.woff" />
+    <Content Include="fonts\SourceSansPro-Semibold.woff" />
+    <Content Include="fonts\SourceSansPro-SemiboldItalic.woff" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="Content\kendo\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="Content\kendo\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="Content\kendo\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="Content\kendo\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="Content\kendo\fonts\glyphs\WebComponentsIcons.eot" />
+    <Content Include="Content\kendo\fonts\glyphs\WebComponentsIcons.ttf" />
+    <Content Include="Content\kendo\fonts\glyphs\WebComponentsIcons.woff" />
+    <None Include="Scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\jquery-2.2.4.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo\kendo.all.min.js" />
+    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -169,24 +318,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\NinjectConfigurator.cs" />
-    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Administration\Controllers\EmailTemplatesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\LogsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ReleaseHistoryController.cs" />
+    <Compile Include="Areas\Administration\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\TraceLogsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\SampleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Infrastructure\AppEngine.cs" />
+    <Compile Include="Infrastructure\DependencyManagement\DependencyRegistrar.cs" />
+    <Compile Include="Infrastructure\DependencyManagement\IDependencyRegistrar.cs" />
+    <Compile Include="Infrastructure\EngineContext.cs" />
+    <Compile Include="Infrastructure\IEngine.cs" />
+    <Compile Include="Infrastructure\Singleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\Shared\AccessDenied.cshtml" />
+    <Content Include="Views\Shared\AdAccountNotFound.cshtml" />
+    <Content Include="Views\Shared\AntiForgery.cshtml" />
+    <Content Include="Views\Shared\Delete.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\PageNotFound.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Sample\Index.cshtml" />
+    <Content Include="Scripts\kendo\kendo.all.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,6 +368,26 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\AspNetMvcActiveDirectoryOwin.Core\AspNetMvcActiveDirectoryOwin.Core.csproj">
+      <Project>{D40C74F1-FD6E-42B3-834D-F1439B3858DF}</Project>
+      <Name>AspNetMvcActiveDirectoryOwin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\AspNetMvcActiveDirectoryOwin.Data\AspNetMvcActiveDirectoryOwin.Data.csproj">
+      <Project>{9878AC54-0B2E-4DD6-A878-2C8810C55209}</Project>
+      <Name>AspNetMvcActiveDirectoryOwin.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\AspNetMvcActiveDirectoryOwin.Emails\AspNetMvcActiveDirectoryOwin.Emails.csproj">
+      <Project>{6004E688-42C4-45D3-982D-2176019CD4D8}</Project>
+      <Name>AspNetMvcActiveDirectoryOwin.Emails</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\AspNetMvcActiveDirectoryOwin.Logging\AspNetMvcActiveDirectoryOwin.Logging.csproj">
+      <Project>{AB53DBBF-D3BA-48B0-A3B7-081C4D6AC34E}</Project>
+      <Name>AspNetMvcActiveDirectoryOwin.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\AspNetMvcActiveDirectoryOwin.Services\AspNetMvcActiveDirectoryOwin.Services.csproj">
+      <Project>{B63F384B-61E8-4DF5-855F-AFB81B24AD35}</Project>
+      <Name>AspNetMvcActiveDirectoryOwin.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AspNetMvcActiveDirectoryOwin.Web.Common\AspNetMvcActiveDirectoryOwin.Web.Common.csproj">
       <Project>{9FF4640D-7E62-4DE3-9A8C-47065ED6F443}</Project>
       <Name>AspNetMvcActiveDirectoryOwin.Web.Common</Name>

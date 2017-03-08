@@ -3,40 +3,60 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - ASP.Net MVC Active Directory Owin</title>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/kendo/css")
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/scripts")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("ASP.Net MVC Active Directory Owin", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                @using (Html.BeginForm("Logout", "Account", new { Area = "" }, FormMethod.Post, new { id = "logoutForm" }))
-                {
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            @Html.AntiForgeryToken()
-                            <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Sign out</a>
-                        </li>
+<body class="fixed skin-blue-light sidebar-mini">
+    <div class="alert-container"></div>
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="@Url.RouteUrl("Home")" class="logo">
+                <span class="logo-mini"><strong>ADO</strong></span>
+                <span class="logo-lg">ASP MVC AD OWIN</span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        @if (User.IsInRole(Constants.RoleNames.Developer) ||
+                             User.IsInRole(Constants.RoleNames.ApplicationManager))
+                        {
+                            <li class="bg-green">
+                                <a href="@Url.Action("Index", "Dashboard", routeValues: new {area = "Administration"})">
+                                    <i class="fa fa-desktop"></i> Administration
+                                </a>
+                            </li>
+                        }
+                        @Html.Partial("_LoginPartial")
                     </ul>
-                }
-            </div>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                @(Html.Kendo().PanelBar()
+                        .Name("Menu")
+                        .ExpandMode(PanelBarExpandMode.Single)
+                        .Items(panelbar =>
+                        {
+                            panelbar.Add().Action("Index", "Home").SpriteCssClasses("fa fa-desktop")
+                                .Text(Constants.MainPages.Dashboard);
+                        })
+                        .Events(events => events.Select("menuSelect"))
+                        .SecurityTrimming(true))
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            @RenderBody()
         </div>
+        <div class="control-sidebar-bg"></div>
     </div>
-
-    <div class="container body-content">
-        @RenderBody()
-    </div>
-
+    @Html.Partial("_Alerts")
+    @RenderSection("scripts", required: false)
 </body>
-
 </html>
