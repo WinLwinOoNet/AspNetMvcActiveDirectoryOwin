@@ -266,7 +266,7 @@ namespace AspNetMvcActiveDirectoryOwin.Web.Areas.Administration.Controllers
             }
             catch (Exception ex)
             {
-                // This is a very rare case that we cannot query Debbi's information from AD.
+                // We cannot query user's information from AD.
                 _log.Error(ex);
             }
             return Json(user, JsonRequestBehavior.AllowGet);
